@@ -2,10 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import catImage from './cat.jpg';
 import catImage2 from './puppy.jpg';
+import React from 'react';
 
-function App() {
+function App() {npx 
     return (
-        <div className="App">
+        <React.Fragment>
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p className="display-1" style={{color: "red", textAlign: "left"}}>Testing Bootstrap</p>
@@ -27,7 +28,7 @@ function App() {
                     </div>
                 </div>
             </header>
-        </div>
+        </React.Fragment>
     );
 }
 
