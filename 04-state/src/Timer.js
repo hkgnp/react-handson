@@ -1,11 +1,12 @@
 import React from 'react'
 
-let timer;
+
 class Timer extends React.Component {
     state = {
         'count': 10
     }
 
+    timer = null;
     render() {
         return (
             <React.Fragment>
@@ -23,11 +24,11 @@ class Timer extends React.Component {
                 'count': this.state.count - 1
             })
         }
-        timer = setInterval(loadTimer, 1000);
+        this.timer = setInterval(loadTimer, 1000);
     }
 
     stop = () => {
-        clearInterval(timer)
+        clearInterval(this.timer)
     }
 
     reset = () => {
