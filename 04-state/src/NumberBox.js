@@ -2,7 +2,7 @@ import React from 'react'
 
 // NumberBox is an extension of React.Component
 class NumberBox extends React.Component {
-    state ={
+    state = {
         'count': 10
     }
 
