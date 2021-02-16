@@ -1,22 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Header from './Header';
+
+const Alert = (props) => {
+    return <div style={{fontFamily: "Tahoma", backgroundColor: props.bgColor, border: "4px black solid", padding: "4px"}}>{props.message}{props.text}</div>
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+            <Header/>
+            <Alert message="Red Alert! Shields Up!" text=" Props.text" bgColor="blue"/>
       </header>
     </div>
   );
