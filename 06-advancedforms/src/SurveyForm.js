@@ -5,7 +5,8 @@ class SurveyForm extends React.Component {
         email: '',
         rating: 1,
         country: '',
-        knowAbout: []
+        knowAbout: [],
+        keepInTouch: []
     }
 
     render() {
@@ -55,6 +56,27 @@ class SurveyForm extends React.Component {
                     </div>
                 </div>
 
+                {/* Single Select */}
+                <div>
+                    <label className="form-label"><h4>Country</h4></label>
+                    <select className="form-control" name="country" value={this.state.country} onChange={this.updateCountry}>
+                        <option></option>
+                        <option>Singapore</option>
+                        <option>Malaysia</option>
+                        <option>Indonesia</option>
+                    </select>
+                </div>
+
+                {/* Multi-Select */}
+                <div>
+                    <label className="form-label"><h4>Keep In Touch</h4></label>
+                    <select className="form-control" name="keepintouch" value={this.state.keepInTouch} onChange={this.updateKeepInTouch} multiple>
+                        <option>Email</option>
+                        <option>SMS</option>
+                        <option>Mail</option>
+                        <option>Phone-call</option>
+                    </select>
+                </div>
             </div>
 
         </React.Fragment>
@@ -80,7 +102,7 @@ class SurveyForm extends React.Component {
             // this.setState({
             //     'knowAbout': [...this.state.knowAbout, e.target.value]
             // })
-        // If array already includes the checked value, remove it from the array
+            // If array already includes the checked value, remove it from the array
         } else {
             // Clone array
             let knowAboutArr = [...this.state.knowAbout]
@@ -91,8 +113,23 @@ class SurveyForm extends React.Component {
                 'knowAbout': knowAboutArrFiltered
             })
         }
+    }
 
+    updateCountry = (e) => {
+        this.setState({
+            'country': e.target.value
+        })
+    }
 
+    updateKeepInTouch = (e) => {
+        let selectedOptions = e.target.selectedOptions;
+        let optionsInText = [];
+        for (let o of selectedOptions) {
+            optionsInText.push(o.value)
+        }
+        this.setState({
+            'keepInTouch': optionsInText
+        })
     }
 }
 
