@@ -9,7 +9,8 @@ class TodoList extends React.Component {
                 'done': true
             }
         ],
-        newTaskTitle: ""
+        newTaskTitle: "",
+        editingTask: false,
     }
 
     render() {
@@ -23,13 +24,21 @@ class TodoList extends React.Component {
             <button onClick={this.addTask}>Add Task</button>
             <h1>Task List</h1>
             {this.renderTaskList()}
+            <div id="popup" style={{display: this.state.editingTask?'block':'none'}}>
+                <label>Title: </label>
+                <input type="text" name="editedTaskTitle" value={this.state.editedTaskTitle} />
+                <button onClick={()=>{this.setState({editingTask:false})}}></button>
+            </div>
         </React.Fragment>
     }
 
     renderTaskList = () => {
         return this.state.tasks.map((todo) => {
-            return <div><div key={todo.id}>{todo.title}</div>
-            <button>Delete</button></div>
+            return <div key={todo.id}>{todo.title}
+            <input type="checkbox" />
+            <button onClick={()=>{this.deleteTask(todo)}}>Delete</button>
+            <button onClick={()=>{this.editTask(todo)}}>Edit</button>
+            </div>
         })
     }
 
@@ -37,6 +46,12 @@ class TodoList extends React.Component {
         this.setState({
             'newTaskTitle': event.target.value
         });
+    }
+
+    editTask = (event) => {
+        this.setState({
+            editingTask: true
+        })
     }
 
     deleteTask = (taskToDelete) => {
@@ -47,37 +62,39 @@ class TodoList extends React.Component {
         })
     }
 
-    updateCheckbox(task) {
+    // // Method 1
+    // updateCheckbox(task) {
 
-        // 1. clone the object that you are changing
-        let clonedTask = { ...task };
+    //     // 1. clone the object that you are changing
+    //     let clonedTask = { ...task };
 
-        // 2. change the object
-        clonedTask.done = !clonedTask.done;
+    //     // 2. change the object
+    //     clonedTask.done = !clonedTask.done;
 
-        // 3. clone the array that you are changing
-        let clonedArray = [...this.state.tasks];
+    //     // 3. clone the array that you are changing
+    //     let clonedArray = [...this.state.tasks];
 
-        // 4. replace the original object at the same index in the cloned array with the cloned object
-        let index = this.state.tasks.findIndex(function (eachTask) {
-            return eachTask.id === task.id;
-        });
+    //     // 4. replace the original object at the same index in the cloned array with the cloned object
+    //     let index = this.state.tasks.findIndex(function (eachTask) {
+    //         return eachTask.id === task.id;
+    //     });
 
-        // 4.1 update the cloned array with the new updated task
-        clonedArray[index] = clonedTask;
+    //     // 4.1 update the cloned array with the new updated task
+    //     clonedArray[index] = clonedTask;
 
-        // 5. put the cloned array into the state
-        this.setState({
-            'tasks': clonedArray
-        })
-    }
+    //     // 5. put the cloned array into the state
+    //     this.setState({
+    //         'tasks': clonedArray
+    //     })
+    // }
 
+    // Method 2
     updateCheckboxV2 = (task) => {
         // 1. Clone and change the done variable at the same time
-        let clonedTask = { ...task, done: !clonedTask.done }
-
+        let clonedTask = { ...task}
+        clonedTask.done = !clonedTask.done
         let clonedArray = this.state.tasks.map( (eachTask)=> {
-            if (eachTask.id != clonedTask.id) {
+            if (eachTask.id !== clonedTask.id) {
                 return eachTask;
             } else {
                 return clonedTask;
@@ -86,15 +103,6 @@ class TodoList extends React.Component {
 
         this.setState({
             'tasks': clonedArray
-        })
-    }
-
-    updateCheckboxV3 = (task) => {
-        let clonedTask = {...task};
-        clonedTask = !clonedTask.done
-
-        let index = this.state.tasks.findIndex((eachTask)=>{
-            return eachTask.id === task.id
         })
     }
 
