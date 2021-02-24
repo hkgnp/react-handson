@@ -5,7 +5,6 @@ export default class RegisterForm extends React.Component {
     username: '',
     email: '',
     password: '',
-    validity: false,
   };
 
   render() {
