@@ -12,6 +12,8 @@ import AirQuality from './AirQuality';
 import RegisterForm from './RegisterForm';
 import Question from './Question';
 import Buffet from './Buffet';
+import GuestList from './GuestList';
+import TransationList from './TransationList';
 
 function App() {
   return (
@@ -41,6 +43,10 @@ function App() {
       <Question />
       <h2 style={{ color: 'blue' }}>Qn 10</h2>
       <Buffet />
+      <h2 style={{ color: 'blue' }}>Qn 11</h2>
+      <GuestList />
+      <h2 style={{ color: 'blue' }}>Qn 12</h2>
+      <TransationList />
     </React.Fragment>
   );
 }
