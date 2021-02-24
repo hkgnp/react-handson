@@ -70,10 +70,12 @@ export default class RegisterForm extends React.Component {
 
     for (let i of validPasswordCharacters) {
       if (!pw.includes(i)) {
-        return <div>Invalid password</div>;
+        continue;
       } else {
-        return <div>Valid password</div>;
+        return '';
       }
     }
+
+    return <h4>Please enter a valid password</h4>;
   };
 }
