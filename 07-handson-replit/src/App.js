@@ -10,6 +10,8 @@ import AreaForm from './AreaForm';
 import LogInForm from './LogInForm';
 import AirQuality from './AirQuality';
 import RegisterForm from './RegisterForm';
+import Question from './Question';
+import Buffet from './Buffet';
 
 function App() {
   return (
@@ -35,6 +37,10 @@ function App() {
       <AirQuality />
       <h2 style={{ color: 'blue' }}>Qn 8</h2>
       <RegisterForm />
+      <h2 style={{ color: 'blue' }}>Qn 9</h2>
+      <Question />
+      <h2 style={{ color: 'blue' }}>Qn 10</h2>
+      <Buffet />
     </React.Fragment>
   );
 }
