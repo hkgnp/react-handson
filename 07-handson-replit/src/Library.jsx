@@ -27,7 +27,7 @@ export default class Library extends React.Component {
 
   addBook = () => {
     let payLoad = {
-      id: Math.floor(Math.random() * 90 + 10),
+      id: Math.floor(Math.random() * 900000 + 10),
       title: this.state.title,
       author: this.state.author,
       genre: this.state.genre,
