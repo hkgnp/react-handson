@@ -45,8 +45,8 @@ export default class Movies extends React.Component {
     return (
       <React.Fragment>
         {this.state.movies.map((m) => (
-          <React.Fragment>
-            <div class="movie">
+          <React.Fragment key={m.title}>
+            <div className="movie">
               <h1>{m.title}</h1>
               <h2>Directed by {m.director}</h2>
             </div>

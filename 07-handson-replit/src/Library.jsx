@@ -128,10 +128,10 @@ export default class Library extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div class="container">
-          <div class="col">{this.displayBooks()}</div>
+        <div className="container">
+          <div className="col">{this.displayBooks()}</div>
 
-          <div class="col">
+          <div className="col">
             <h3 style={{ display: !this.state.id ? 'block' : 'none' }}>
               Add Book
             </h3>

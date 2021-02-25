@@ -61,11 +61,11 @@ export default class UpdateMovie extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div class="container">
-          <div class="col">
+        <div className="container">
+          <div className="col">
             {this.state.movies.map((m) => (
-              <React.Fragment>
-                <div key={m.id} class="movie">
+              <React.Fragment key={m.id}>
+                <div className="movie">
                   <h1>
                     {m.title}{' '}
                     <button
@@ -82,7 +82,7 @@ export default class UpdateMovie extends React.Component {
             ))}
           </div>
 
-          <div class="col">
+          <div className="col">
             <h3>Edit Movie</h3>
             <div>
               <label>Movie Title:</label>

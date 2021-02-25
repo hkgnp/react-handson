@@ -37,7 +37,7 @@ export default class Numbers extends React.Component {
       <React.Fragment>
         <ul>
           {this.state.allNumbers.map((number) => (
-            <li>{number}</li>
+            <li key={number}>{number}</li>
           ))}
         </ul>
         <div>
