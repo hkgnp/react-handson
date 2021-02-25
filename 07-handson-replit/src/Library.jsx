@@ -41,11 +41,46 @@ export default class Library extends React.Component {
     });
   };
 
-  updateBook = () => {};
+  updateBook = () => {
+    let payLoad = {
+      id: this.state.id,
+      title: this.state.title,
+      author: this.state.author,
+      genre: this.state.genre,
+      tags: this.state.tags,
+    };
+    let clone = [...this.state.books];
+    clone.splice(
+      clone.findIndex((b) => b.id === this.state.id),
+      1,
+      payLoad
+    );
+    this.setState({
+      books: clone,
+    });
+  };
 
-  displayEditBook = () => {};
+  displayEditBook = (e) => {
+    let arr = this.state.books.filter((g) => g.id === parseInt(e.target.name));
 
-  cancelEditBook = () => {};
+    this.setState({
+      id: arr[0].id,
+      title: arr[0].title,
+      author: arr[0].author,
+      genre: arr[0].genre,
+      tags: arr[0].tags,
+    });
+  };
+
+  cancelEditBook = () => {
+    this.setState({
+      id: '',
+      title: '',
+      author: '',
+      genre: '',
+      tags: '',
+    });
+  };
 
   updateFormField = (e) => {
     this.setState({
@@ -81,6 +116,11 @@ export default class Library extends React.Component {
         <li>Genre: {b.genre}</li>
         <li>ISBN: {b.id}</li>
         <li>Tags: {b.tags.join(', ')}</li>
+        <li>
+          <button name={b.id} onClick={this.displayEditBook}>
+            Edit
+          </button>
+        </li>
       </p>
     ));
   };
@@ -92,10 +132,20 @@ export default class Library extends React.Component {
           <div class="col">{this.displayBooks()}</div>
 
           <div class="col">
-            <h3>Add Book</h3>
+            <h3 style={{ display: !this.state.id ? 'block' : 'none' }}>
+              Add Book
+            </h3>
+            <h3 style={{ display: this.state.id ? 'block' : 'none' }}>
+              Edit Book
+            </h3>
             <div>
               <label>Title:</label>
-              <input type="text" name="title" onChange={this.updateFormField} />
+              <input
+                type="text"
+                name="title"
+                onChange={this.updateFormField}
+                value={this.state.title}
+              />
             </div>
             <div>
               <label>Author</label>
@@ -103,6 +153,7 @@ export default class Library extends React.Component {
                 type="text"
                 name="author"
                 onChange={this.updateFormField}
+                value={this.state.author}
               />
             </div>
             <div>
@@ -139,6 +190,7 @@ export default class Library extends React.Component {
                 name="tags"
                 value="classic"
                 onChange={this.getTags}
+                checked={this.state.tags.includes('classic')}
               />
               <label>Classic</label>
               <input
@@ -146,6 +198,7 @@ export default class Library extends React.Component {
                 name="tags"
                 value="doorstopper"
                 onChange={this.getTags}
+                checked={this.state.tags.includes('doorstopper')}
               />
               <label>Doorstopper</label>
               <input
@@ -153,17 +206,36 @@ export default class Library extends React.Component {
                 name="tags"
                 value="futuristic"
                 onChange={this.getTags}
+                checked={this.state.tags.includes('futuristic')}
               />
-              <label>futuristic</label>
+              <label>Futuristic</label>
               <input
                 type="checkbox"
                 name="tags"
                 value="trilogy"
                 onChange={this.getTags}
+                checked={this.state.tags.includes('trilogy')}
               />
-              <label>trilogy</label>
+              <label>Trilogy</label>
             </div>
-            <button onClick={this.addBook}>Add Book</button>
+            <button
+              style={{ display: !this.state.id ? 'block' : 'none' }}
+              onClick={this.addBook}
+            >
+              Add Book
+            </button>
+            <button
+              style={{ display: this.state.id ? 'block' : 'none' }}
+              onClick={this.updateBook}
+            >
+              Edit Book
+            </button>
+            <button
+              style={{ display: this.state.id ? 'block' : 'none' }}
+              onClick={this.cancelEditBook}
+            >
+              Cancel Edit Book
+            </button>
           </div>
         </div>
       </React.Fragment>
