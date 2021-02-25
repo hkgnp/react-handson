@@ -19,4 +19,8 @@ export default class GuestList extends React.Component {
     }
     return g;
   };
+
+  renderGuestListV2 = () => {
+    return this.state.guests.map((g) => <li>{g}</li>);
+  };
 }

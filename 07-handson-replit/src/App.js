@@ -14,6 +14,11 @@ import Question from './Question';
 import Buffet from './Buffet';
 import GuestList from './GuestList';
 import TransationList from './TransationList';
+import Numbers from './Numbers';
+import Movies from './Movies';
+import RemoveNumbers from './RemoveNumbers';
+import UpdateMovie from './UpdateMovie';
+import Library from './Library';
 
 function App() {
   return (
@@ -47,6 +52,16 @@ function App() {
       <GuestList />
       <h2 style={{ color: 'blue' }}>Qn 12</h2>
       <TransationList />
+      <h2 style={{ color: 'blue' }}>Qn 13</h2>
+      <Numbers />
+      <h2 style={{ color: 'blue' }}>Qn 14</h2>
+      <Movies />
+      <h2 style={{ color: 'blue' }}>Qn 15</h2>
+      <RemoveNumbers />
+      <h2 style={{ color: 'blue' }}>Qn 16</h2>
+      <UpdateMovie />
+      <h2 style={{ color: 'blue' }}>Qn 17</h2>
+      <Library />
     </React.Fragment>
   );
 }
